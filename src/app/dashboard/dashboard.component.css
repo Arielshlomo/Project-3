@@ -1,0 +1,13 @@
+.wrapping-container {
+  flex-wrap: wrap;
+}
+.dashboard-card {
+  width: 300px;
+  height: 100px;
+  margin: 10px;
+  padding: 20px;
+}
+
+.font-size-14 {
+  font-size: 14px;
+}

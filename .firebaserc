@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "little-linguist-test": {
+      "hosting": {
+        "demo-app1": [
+          "little-linguist-test"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "little-linguist-test"
+  }
+}

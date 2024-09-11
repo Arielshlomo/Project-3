@@ -1,0 +1,27 @@
+<mat-toolbar class="app-header" color="primary">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    [matMenuTriggerFor]="menu"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="app-title">Linguist Little</span>
+  <span class="example-spacer"></span>
+  <mat-icon
+  (click)="navigateToHelp()"
+    style="font-size: 18px; width: 18px; height: 18px; margin-left: 20px"
+    >help
+    </mat-icon>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item routerLink="/language-game/dashboard">Dashboard</button>
+  <button mat-menu-item routerLink="/language-game/category">
+    Word Categories
+  </button>
+  <button mat-menu-item routerLink="/language-game/game-mode/start">
+    Play Game
+  </button>
+</mat-menu>

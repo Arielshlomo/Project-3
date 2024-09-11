@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.m-auto {
+  margin: auto;
+}
+.mb-5 {
+  margin-bottom: 20px;
+}
+.mt-20 {
+  margin-top: 20px;
+}
+.mt-50 {
+  margin-top: 50px;
+}
+.w-fit {
+  width: fit-content;
+}
+.p-5 {
+  padding: 5px;
+}
+.text-center {
+  text-align: center;
+}
+.flex {
+  display: flex;
+}
+.justify-center {
+  justify-content: center;
+}
+.items-center {
+  align-items: center;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.snackbar-red > .mdc-snackbar__surface {
+  background-color: red !important;
+}
+.snackbar-green > .mdc-snackbar__surface {
+  background-color: green !important;
+}

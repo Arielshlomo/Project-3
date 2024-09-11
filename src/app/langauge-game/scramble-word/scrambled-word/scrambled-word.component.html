@@ -1,0 +1,81 @@
+<app-header></app-header>
+<mat-toolbar class="flex justify-between items-center">
+  <h1>Scrambled Words Game -> Category - {{ category?.categoryName }}</h1>
+  <app-exit-button></app-exit-button>
+</mat-toolbar>
+
+<div class="matching-game">
+  <div class="top-container flex justify-between items-center">
+    <span routerLink="/language-game/game-mode/start">
+      <mat-icon>arrow_back</mat-icon>
+    </span>
+    <span *ngIf="!isGameOver" class="flex justify-between items-center">
+      <mat-icon>attach_money</mat-icon> Points: {{ currentPoints }}
+    </span>
+  </div>
+
+  <mat-card class="m-auto w-fit mt-50" style="min-width: 600px" *ngIf="category">
+    <mat-card-content>
+      <div *ngIf="!isGameOver">
+        <h2>{{ words[currentWordIndex].targetLanguage }}</h2>
+        <p>{{ scrambledWord }}</p>
+        <mat-form-field class="field-changes">
+          <input
+            matInput
+            [(ngModel)]="userGuess"
+            placeholder="Enter the correct word"
+            style="width: 90%; margin: auto"
+          />
+        </mat-form-field>
+
+        <button mat-raised-button [color]="'primary'" (click)="checkGuess()">
+          Submit
+        </button>
+        <button mat-raised-button (click)="resetGuess()">Reset</button>
+
+        <mat-progress-bar
+          mode="determinate"
+          [value]="progress"
+        ></mat-progress-bar>
+      </div>
+
+      <div *ngIf="isGameOver">
+        <h2>Game Over</h2>
+        <p>Total Points: {{ currentPoints }}</p>
+        <p>
+          You translated {{ currentPoints }} out of
+          {{ this.category.words.length }} words correctly !
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Source Word</th>
+              <th>Translation</th>
+              <th>Guess</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let word of category.words; let i = index">
+              <td>{{ word.sourceLanguage }}</td>
+              <td>{{ word.targetLanguage }}</td>
+              <td
+                [ngClass]="correctWordIndex.indexOf(i) > -1 ? 'green' : 'red'"
+              >
+                {{ correctWordIndex.indexOf(i) > -1 ? "Correct" : "Wrong" }}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button
+          mat-raised-button
+          routerLink="/language-game/game-mode/start"
+          style="margin-top: 20px"
+        >
+          Play Again
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

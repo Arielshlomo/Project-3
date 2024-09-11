@@ -1,0 +1,9 @@
+.selected {
+  color: rgb(65, 65, 255);
+}
+.disabled {
+  color: grey;
+}
+.normal {
+  color: black;
+}

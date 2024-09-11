@@ -1,0 +1,26 @@
+.top-container {
+  margin: auto;
+  margin-top: 10px;
+  width: 90vw;
+  padding: 20px;
+}
+
+.field-changes {
+  width: 60%;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+th,
+td {
+  border: 1px solid grey;
+  padding: 4px 40px;
+  text-align: center;
+}
+
+.green {
+  color: green;
+}
+.red {
+  color: red;
+}

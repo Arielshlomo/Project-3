@@ -1,0 +1,90 @@
+<app-header></app-header>
+<mat-toolbar class="flex justify-between items-center">
+  <h1>
+    <span routerLink="/language-game/game-mode/start">
+      <mat-icon>arrow_back</mat-icon>
+    </span>
+    Try to translate all words correctly !
+  </h1>
+  <app-exit-button></app-exit-button>
+</mat-toolbar>
+
+<mat-card class="m-auto w-fit mt-50">
+  <mat-card-content>
+    <div>
+      <h3>Translate - {{ categoriesObject.categoryName }}</h3>
+      <div>Retry Left : {{ retryLeft }}</div>
+      <br />
+      <div class="m-auto">
+        <form [formGroup]="translationForm" *ngIf="translationForm">
+          <div formArrayName="words">
+            <div
+              *ngFor="let wordGroup of words.controls; let i = index"
+              [formGroupName]="i"
+            >
+              <div class="text-center">
+                Origin:
+                <span style="color: #fc6736">{{
+                  wordGroup?.get("sourceLanguage")?.value
+                }}</span>
+              </div>
+
+              <div class="mt-20">
+                <mat-form-field style="width: 400px">
+                  <mat-label>Target</mat-label>
+                  <input
+                    matInput
+                    type="text"
+                    formControlName="targetLanguage"
+                  />
+                  <mat-error *ngIf="wordGroup.get('targetLanguage')?.invalid">
+                    Target Translation is required
+                  </mat-error>
+                </mat-form-field>
+
+                <button
+                  mat-icon-button
+                  color="primary"
+                  *ngIf="wordGroup?.get('isCorrect')?.value"
+                >
+                  <mat-icon>done_outline</mat-icon>
+                </button>
+                <button
+                  mat-icon-button
+                  color="warn"
+                  *ngIf="wordGroup?.get('isCorrect')?.value == false"
+                >
+                  <mat-icon>clear</mat-icon>
+                </button>
+                <button
+                  mat-flat-button
+                  *ngIf="wordGroup?.get('isCorrect')?.value == null"
+                >
+                  <mat-icon>clear</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <button
+        mat-flat-button
+        color="primary"
+        class="mt-20"
+        *ngIf="retryLeft > 0"
+        (click)="checkTranslation()"
+      >
+        Check Translation
+      </button>
+      <button
+        mat-flat-button
+        color="warn"
+        class="mt-20"
+        *ngIf="retryLeft == 0"
+        (click)="seeTranslation()"
+      >
+        See Translation
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

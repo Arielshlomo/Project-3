@@ -1,0 +1,58 @@
+<app-header></app-header>
+<mat-toolbar>
+    <h1>
+      Dashboard
+    </h1>
+  </mat-toolbar>
+
+<div class="wrapping-container flex justify-between items-center">
+  <mat-card class="dashboard-card flex justify-center items-center">
+    <mat-card-title class="font-size-14">Total Points</mat-card-title>
+    <mat-card-content>{{ totalPoints }}</mat-card-content>
+  </mat-card>
+
+  <mat-card class="dashboard-card flex justify-center items-center">
+    <mat-card-title class="font-size-14">Number of Games Played</mat-card-title>
+    <mat-card-content>{{ numberOfGamesPlayed }}</mat-card-content>
+  </mat-card>
+
+  <mat-card class="dashboard-card flex justify-center items-center">
+    <mat-card-title class="font-size-14"
+      >Game Type with Highest Average Score</mat-card-title
+    >
+    <mat-card-content>{{ gameTypeWithHighestAverageScore }}</mat-card-content>
+  </mat-card>
+
+  <mat-card class="dashboard-card flex justify-center items-center">
+    <mat-card-title class="font-size-14"
+      >Game Type with Lowest Average Score</mat-card-title
+    >
+    <mat-card-content>{{ gameTypeWithLowestAverageScore }}</mat-card-content>
+  </mat-card>
+
+  <mat-card class="dashboard-card flex justify-center items-center">
+    <mat-card-title class="font-size-14"
+      >Number of Categories Learned</mat-card-title
+    >
+    <mat-card-content>{{ numberOfCategoriesLearned }}</mat-card-content>
+  </mat-card>
+
+  <mat-card class="dashboard-card flex justify-center items-center">
+    <mat-card-title class="font-size-14"
+      >Number of Categories Not Learned</mat-card-title
+    >
+    <mat-card-content>{{ numberOfCategoriesNotLearned }}</mat-card-content>
+  </mat-card>
+
+  <mat-card class="dashboard-card flex justify-center items-center">
+    <mat-card-title class="font-size-14"
+      >Percentage of Perfect Score Games</mat-card-title
+    >
+    <mat-card-content>{{ percentageOfPerfectScoreGames }}%</mat-card-content>
+  </mat-card>
+
+  <mat-card class="dashboard-card flex justify-center items-center">
+    <mat-card-title class="font-size-14">Most Played Category</mat-card-title>
+    <mat-card-content>{{ mostPlayedCategory }}</mat-card-content>
+  </mat-card>
+</div>

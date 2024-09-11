@@ -1,0 +1,70 @@
+<app-header></app-header>
+<mat-card class="m-auto w-fit mt-50">
+  <mat-card-content *ngIf="!showGameSelectionPanel">
+    <div style="width: 500px">
+      <p>Please select a category to start the game</p>
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        [(ngModel)]="selectedCategoryId"
+      >
+        @for (category of categoriesData; track category) {
+        <mat-radio-button
+          class="example-radio-button"
+          [value]="category.numericIdentifier"
+        >
+          <div class="flex justify-between items-center">
+            <div>
+              <b>{{ category.categoryName }}</b> (Number of words available :
+              {{ category.words.length }})
+            </div>
+            <div (click)="openInformationDialog(category?.description)">
+              <mat-icon style="font-size: 18px; width: 18px; height: 18px; margin-left: 20px;"
+                >info</mat-icon
+              >
+            </div>
+          </div>
+        </mat-radio-button>
+        <br />
+        }
+      </mat-radio-group>
+      <button
+        mat-flat-button
+        color="primary"
+        class="mt-20"
+        [disabled]="selectedCategoryId == -1"
+        (click)="startGame()"
+      >
+        Start Game
+      </button>
+    </div>
+  </mat-card-content>
+  <mat-card-content *ngIf="showGameSelectionPanel">
+    <div style="width: 500px">
+      <p>Please select game type</p>
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        [(ngModel)]="selectedGame"
+      >
+        @for (game of availableGames; track game) {
+        <mat-radio-button class="example-radio-button" [value]="game.value">
+          <div>
+            <b>{{ game.label }}</b>
+          </div>
+        </mat-radio-button>
+        <br />
+        }
+      </mat-radio-group>
+      <button
+        mat-flat-button
+        color="primary"
+        class="mt-20"
+        [disabled]="selectedCategoryId == -1"
+        (click)="startGame()"
+      >
+        Start Game
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

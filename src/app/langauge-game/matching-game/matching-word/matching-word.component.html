@@ -1,0 +1,67 @@
+<app-header></app-header>
+<mat-toolbar class="flex justify-between items-center">
+  <h1>Matching Words Game</h1>
+  <app-exit-button></app-exit-button>
+</mat-toolbar>
+
+<div class="matching-game">
+  <div class="top-container flex justify-between items-center">
+    <span routerLink="/language-game/game-mode/start">
+      <mat-icon>arrow_back</mat-icon>
+    </span>
+
+    <span *ngIf="successes !== 5" class="flex justify-between items-center">
+      <mat-icon>attach_money</mat-icon> Points: {{ currentPoints }}
+    </span>
+  </div>
+  <div class="game-board flex items-center" *ngIf="successes !== 5">
+    <div class="source-words">
+      <div class="mb-5">Source Word</div>
+      <app-match-single-word
+        *ngFor="let word of sourceWords; let i = index"
+        [word]="word.sourceLanguage"
+        [status]="sourceWordStatuses[i]"
+        (click)="onWordClick(i, true)"
+      ></app-match-single-word>
+    </div>
+
+    <div class="target-words">
+      <div class="mb-5">Target Word</div>
+      <app-match-single-word
+        *ngFor="let word of targetWords; let i = index"
+        [word]="word"
+        [status]="targetWordStatuses[i]"
+        (click)="onWordClick(i, false)"
+      ></app-match-single-word>
+    </div>
+  </div>
+
+  <mat-card
+    class="m-auto w-fit mt-50"
+    style="min-width: 500px"
+    *ngIf="successes === 5"
+  >
+    <mat-card-content>
+      <div class="game-summary">
+        <h3>Game Summary</h3>
+        <p>Total Points: {{ totalPoints }}</p>
+        <p>Attempts: {{ attempts }}</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Source Word</th>
+              <th>Translation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let word of sourceWords">
+              <td>{{ word.sourceLanguage }}</td>
+              <td>{{ word.targetLanguage }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

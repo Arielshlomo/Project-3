@@ -1,0 +1,10 @@
+<mat-card style="margin-bottom: 10px; min-width: 250px">
+  <mat-card-content
+    [ngClass]="{
+      selected: status == wordStatus.Selected,
+      disabled: status == wordStatus.Disabled,
+      normal: status == wordStatus.Normal
+    }"
+    >{{ word }}</mat-card-content
+  >
+</mat-card>
